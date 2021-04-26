@@ -1,11 +1,12 @@
 const express = require('express')
 const env = require('dotenv')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
 // environment variable or you can say constants
 const app = express()
 env.config()
-app.use(express.json())
+app.use(bodyParser())
 
 // mongoose Databases connection string
 mongoose.connect(
@@ -21,10 +22,16 @@ mongoose.connect(
 })
 
 // 
-app.get("/", (req, res) => {
-    res.status(200).json({ message: 'Welcome, server side.' })
-});
+// app.get("/", (req, res) => {
+//     res.status(200).json({ message: 'Welcome, server side.' })
+// });
+
+// routes
+const authRoutes = require('./routes/auth')
+
+// api
+app.use('/api', authRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
-});
+})
