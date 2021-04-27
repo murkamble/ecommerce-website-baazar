@@ -28,9 +28,11 @@ mongoose.connect(
 
 // routes
 const authRoutes = require('./routes/auth')
+const adminAuthRoutes = require('./routes/admin/auth')
 
 // api
 app.use('/api', authRoutes)
+app.use('/api', adminAuthRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
