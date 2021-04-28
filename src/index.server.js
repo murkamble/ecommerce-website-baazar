@@ -31,12 +31,14 @@ const authRoutes = require('./routes/auth')
 const adminAuthRoutes = require('./routes/admin/auth')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
+const cartRoutes = require('./routes/cart')
 
 // api
 app.use('/api', authRoutes)
 app.use('/api', adminAuthRoutes)
 app.use('/api', categoryRoutes)
 app.use('/api', productRoutes)
+app.use('/api', cartRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
