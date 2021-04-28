@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 // environment variable or you can say constants
 const app = express()
 env.config()
-app.use(bodyParser())
+app.use(express.json())
 
 // mongoose Databases connection string
 mongoose.connect(
@@ -29,10 +29,12 @@ mongoose.connect(
 // routes
 const authRoutes = require('./routes/auth')
 const adminAuthRoutes = require('./routes/admin/auth')
+const categoryRoutes = require('./routes/category')
 
 // api
 app.use('/api', authRoutes)
 app.use('/api', adminAuthRoutes)
+app.use('/api', categoryRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
