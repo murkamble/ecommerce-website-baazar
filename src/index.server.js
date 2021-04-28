@@ -2,6 +2,7 @@ const express = require('express')
 const env = require('dotenv')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const path = require('path')
 
 // environment variable or you can say constants
 const app = express()
@@ -34,6 +35,7 @@ const productRoutes = require('./routes/product')
 const cartRoutes = require('./routes/cart')
 
 // api
+app.use('/public', express.static(path.join(__dirname, 'uploads')))
 app.use('/api', authRoutes)
 app.use('/api', adminAuthRoutes)
 app.use('/api', categoryRoutes)
