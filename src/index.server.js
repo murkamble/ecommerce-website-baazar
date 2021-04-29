@@ -3,11 +3,13 @@ const env = require('dotenv')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const path = require('path')
+const cors = require('cors')
 
 // environment variable or you can say constants
 const app = express()
 env.config()
 app.use(express.json())
+app.use(cors())
 
 // mongoose Databases connection string
 mongoose.connect(
