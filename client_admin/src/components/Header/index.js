@@ -3,6 +3,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../actions";
+import './style.css';
 
 const Header = () => {
 
@@ -38,7 +39,17 @@ const Header = () => {
 
     return (
         <div>
-            <Navbar collapseOnSelect fixed expand="sm" bg="primary" variant="dark" style={{ zIndex: 1 }}>
+            <Navbar
+                collapseOnSelect
+                fixed
+                expand="sm"
+                variant="light"
+                style={{
+                    zIndex: 1,
+                    background: ' #fff ',
+                    boxShadow: '0px 0px 4px 0px',
+                }}
+            >
                 <Container fluid>
                     <Link to="/" className="navbar-brand">Admin Dashboard</Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -50,7 +61,7 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </div >
     )
 }
 
