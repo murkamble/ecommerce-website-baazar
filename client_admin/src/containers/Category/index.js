@@ -102,7 +102,7 @@ const Category = (props) => {
                         className="form-control" 
                         onChange={(e) => setParentCategoryId(e.target.value)} 
                     >
-                        <option>select Category</option>
+                        <option>Select Category</option>
                         {
                             createCategoryList(category.categories).map(option =>
                                 <option
