@@ -28,12 +28,12 @@ export const addCategory = (form) => {
         if (res.status === 201) {
             dispatch({ 
                 type: categoryConstants.ADD_NEW_CATEGORY_SUCCESS,
-                payload: res.data.category
+                payload: { category: res.data.category } 
             });
         } else {
             dispatch({ 
                 type: categoryConstants.ADD_NEW_CATEGORY_FAILURE,
-                payload: res.data.error 
+                payload: { error: res.data.error }
             });
         }
     }

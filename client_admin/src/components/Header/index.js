@@ -41,8 +41,8 @@ const Header = () => {
         <div>
             <Navbar
                 collapseOnSelect
-                fixed
-                expand="sm"
+                fixed="top"
+                expand="lg"
                 variant="light"
                 style={{
                     zIndex: 1,
