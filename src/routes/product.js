@@ -26,4 +26,7 @@ router.post(
 );
 
 
+router.get('/product/:slug', getProductsBySlug);
+
+
 module.exports = router;
