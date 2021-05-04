@@ -6,7 +6,7 @@ const initState = {
     error: null,
 }
 
-const buildNewCategories = ( parentId, categories, category) => {
+const buildNewCategories = (parentId, categories, category) => {
     let myCategories = [];
 
     if (parentId == undefined) {
@@ -22,9 +22,9 @@ const buildNewCategories = ( parentId, categories, category) => {
         ];
     }
 
-    for(let cat of categories){
+    for (let cat of categories) {
 
-        if(cat._id == parentId){
+        if (cat._id == parentId) {
             myCategories.push({
                 ...cat,
                 children: cat.children ? buildNewCategories(parentId, [...cat.children, {
@@ -35,13 +35,13 @@ const buildNewCategories = ( parentId, categories, category) => {
                     children: category.children
                 }], category) : []
             })
-        }else{
+        } else {
             myCategories.push({
                 ...cat,
-                children: cat.children ? buildNewCategories( parentId, cat.children, category) : []
+                children: cat.children ? buildNewCategories(parentId, cat.children, category) : []
             })
         }
-        
+
     }
 
     return myCategories;
@@ -66,9 +66,9 @@ export default (state = initState, action) => {
 
         case categoryConstants.ADD_NEW_CATEGORY_SUCCESS:
             const category = action.payload.category
-            const updateCategories = buildNewCategories( category.parentId, state.categories, category)
+            const updateCategories = buildNewCategories(category.parentId, state.categories, category)
             console.log(updateCategories)
-            
+
             state = {
                 ...state,
                 categories: updateCategories,
@@ -79,6 +79,46 @@ export default (state = initState, action) => {
         case categoryConstants.ADD_NEW_CATEGORY_FAILURE:
             state = {
                 ...initState
+            }
+            break;
+
+
+        case categoryConstants.UPDATE_CATEGORRIES_REQUEST:
+            state = {
+                ...state,
+                loading: true
+            }
+            break;
+        case categoryConstants.UPDATE_CATEGORRIES_SUCCESS:
+            state = {
+                ...state,
+                loading: false
+            }
+            break;
+        case categoryConstants.UPDATE_CATEGORRIES_FAILURE:
+            state = {
+                ...state,
+                error: action.payload.error,
+                loading: false
+            }
+            break;
+        case categoryConstants.DELETE_CATEGORRIES_REQUEST:
+            state = {
+                ...state,
+                loading: true
+            }
+            break;
+        case categoryConstants.DELETE_CATEGORRIES_SUCCESS:
+            state = {
+                ...state,
+                loading: false
+            }
+            break;
+        case categoryConstants.DELETE_CATEGORRIES_FAILURE:
+            state = {
+                ...state,
+                error: action.payload.error,
+                loading: false
             }
             break;
 
