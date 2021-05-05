@@ -1,4 +1,4 @@
-import { productsConstants } from '../actions/constants';
+import { productConstants } from '../actions/constants';
 
 const initState ={
     products: [],
@@ -14,7 +14,7 @@ const initState ={
 
 export default (state = initState, action) => {
     switch(action.type){
-        case productsConstants.GET_ALL_PRODUCT_SLUG:
+        case productConstants.GET_ALL_PRODUCT_SLUG:
             state = {
                 ...state,
                 products: action.payload.products,
