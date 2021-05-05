@@ -29,10 +29,10 @@ const AddCategoModal = (props) => {
                         value={categoryName}
                         placeholder={'Category Name'}
                         onChange={(e) => setCategoryName(e.target.value)}
-                        className="form-control-sm"
+                        className="form-control form-control-sm"
                     />
-                {/* </Col>
-                <Col > */}
+                </Col>
+                <Col >
                     <select
                         className="form-control form-control-sm"
                         value={parentCategoryId}
