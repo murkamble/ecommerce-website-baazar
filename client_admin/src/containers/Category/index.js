@@ -40,6 +40,12 @@ const Category = (props) => {
     const category = useSelector(state => state.category)
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        if (!category.loading) {
+            setShow(false);
+        }
+    }, [category.loading])
+
 
     const renderCategories = (categories) => {
         let myCategories = [];
@@ -57,6 +63,13 @@ const Category = (props) => {
 
     const handleClose = () => {
         const form = new FormData()
+        
+        if (categoryName === "") {
+            alert('Category name is required');
+            setShow(false);
+            return;
+        }
+
         form.append('name', categoryName)
         form.append('parentId', parentCategoryId)
         form.append('categoryImage', categoryImage)
@@ -112,10 +125,12 @@ const Category = (props) => {
 
     const handleCategoryInput = (key, value, index, type) => {
         if (type == "checked") {
-            const updatedCheckedArray = checkedArray.map((item, _index) => index == _index ? { ...item, [key]: value } : item);
+            const updatedCheckedArray = checkedArray.map((item, _index) => 
+            index == _index ? { ...item, [key]: value } : item);
             setCheckedArray(updatedCheckedArray);
         } else if (type == "expanded") {
-            const updatedExpandedArray = expandedArray.map((item, _index) => index == _index ? { ...item, [key]: value } : item);
+            const updatedExpandedArray = expandedArray.map((item, _index) => 
+            index == _index ? { ...item, [key]: value } : item);
             setExpandedArray(updatedExpandedArray);
         }
 
@@ -245,7 +260,8 @@ const Category = (props) => {
 
             <AddCategoModal
                 show={show}
-                handleClose={handleClose}
+                handleClose={() => setShow(false)}
+                onSubmit={handleClose}
                 modalTitle={'Add New Category'}
                 categoryName={categoryName}
                 setCategoryName={setCategoryName}
@@ -257,7 +273,8 @@ const Category = (props) => {
 
             <UpdateCategoriesModal
                 show={updateCategoryModal}
-                handleClose={updateCategoriesForm}
+                handleClose={() => setUpdateCategoryModal(false)}
+                onSubmit={updateCategoriesForm}
                 modalTitle={'Update Category'}
                 size="lg"
                 expandedArray={expandedArray}

@@ -19,11 +19,26 @@ const NewPage = () => {
     const [categoryId, setCategoryId] = useState('');
     const [type, setType] = useState('');
     const dispatch = useDispatch();
+    const page = useSelector(state => state.page);
 
 
     useEffect(() => {
         setCategories(linearCategories(category.categories));
     }, [category])
+
+
+    useEffect(() => {
+        console.log(page);
+        if (!page.loading) {
+            setCreateModal(false);
+            setTitle('');
+            setCategoryId('');
+            setDesc('');
+            setProducts([]);
+            setBanners([]);
+        }
+    }, [page]);
+
 
     const onCategoryChange = (e) => {
         const category = categories.find(category => category.value == e.target.value)
@@ -42,14 +57,11 @@ const NewPage = () => {
     }
 
     const sumbitPageForm = (e) => {
-        // e.target.preventDefault();
-
-        if(title === ""){
+        if (title === "") {
             alert('Title is Required');
             setCreateModal(false);
             return;
         }
-
         const form = new FormData();
         form.append('title', title);
         form.append('description', desc);
@@ -61,10 +73,7 @@ const NewPage = () => {
         products.forEach((product, index) => {
             form.append('products', product);
         });
-
         dispatch(createPage(form));
-
-        // console.log({title,desc,category,type,banners,products})
     }
 
 
@@ -73,23 +82,31 @@ const NewPage = () => {
             <Modal
                 show={createModal}
                 modalTitle={'Create New Page'}
-                handleClose={sumbitPageForm}
+                handleClose={() => setCreateModal(false)}
+                onSubmit={sumbitPageForm}
             >
                 <Container>
                     <Row>
                         <Col>
-                            <select
+                            {/* <select
                                 className="form-control "
                                 value={categoryId}
                                 onChange={onCategoryChange}
                             >
                                 <option value="">Select Category</option>
                                 {
-                                    categories.map(cat => 
-                                    <option key={cat.value} value={cat.value}>{cat.name}</option>
+                                    categories.map(cat =>
+                                        <option key={cat.value} value={cat.value}>{cat.name}</option>
                                     )
                                 }
-                            </select>
+                            </select> */}
+                            <Input 
+                                type="select"
+                                value={categoryId}
+                                onChange={onCategoryChange}
+                                options={categories}
+                                placeholder={'Select Category'}
+                            />
                         </Col>
                     </Row>
                     <Row>
@@ -152,8 +169,15 @@ const NewPage = () => {
 
     return (
         <Layout sidebar>
-            {renderCreatePageModal()}
-            <button onClick={() => setCreateModal(true)}>Create Page</button>
+            {
+                page.loading ?
+                    <p>Creating Page...please wait</p>
+                    :
+                    <>
+                        {renderCreatePageModal()}
+                        <button onClick={() => setCreateModal(true)}>Create Page</button>
+                    </>
+            }
         </Layout>
     );
 }
