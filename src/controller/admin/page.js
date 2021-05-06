@@ -10,7 +10,7 @@ exports.createPage = (req, res) => {
     }
     if (products && products.length > 0) {
         req.body.products = products.map((product, index) => ({
-            img: `/public/${product.filename}`,
+            img: `${process.env.API}/public/${product.filename}`,
             navigateTo: `/productClicked?categoryId=${req.body.category}&type=${req.body.type}`,
         }));
     }
