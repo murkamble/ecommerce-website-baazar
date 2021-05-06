@@ -1,7 +1,7 @@
 .header{
     width: 100%;
     height: 56px;
-    background: #f7acac;
+    background: #47b13b;
     border-bottom: 1px solid #cecece;
 }
 
@@ -85,7 +85,7 @@
     font-size: 16px;
     cursor: pointer;
   }
-.more {
+.more, .fullName {
     font-weight: bold;
     color: #fff;
     display: flex;
@@ -125,7 +125,7 @@
   color: #fff;
   letter-spacing: 1px;
   background-image: url('../../images/login-image.png');
-  background-color: #f7acac;
+  background-color: #47b13b;
   background-repeat: no-repeat;
   background-position: center 85%;
   padding: 40px 33px;
