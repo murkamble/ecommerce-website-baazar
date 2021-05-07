@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsBySlug } from "../../../actions";
 import { generatePublicUrl } from '../../../urlConfig';
 import { Link } from "react-router-dom";
+import Card from "../../../components/UI/Card";
+import { MaterialButton } from "../../../components/MaterialUI";
 
 /**
 * @author
@@ -34,11 +36,23 @@ const ProductStore = (props) => {
       {
         Object.keys(product.productsByPrice).map((key, index) => {
           return (
-            <div className="card">
-              <div className="cardHeader">
-                <div>{props.match.params.slug} Mobile {priceRange[key]}</div>
-                <button>View All</button>
-              </div>
+            <Card
+              headerLeft={`${props.match.params.slug} mobile under ${priceRange[key]}`}
+              headerRight={
+                <MaterialButton
+                  title={"VIEW ALL"}
+                  style={{
+                    width: "96px",
+                  }}
+                  bgColor="#2874f0"
+                  fontSize="12px"
+                />
+              }
+              style={{
+                width: "calc(100% - 40px)",
+                margin: "20px",
+              }}
+            >
               <div style={{ display: 'flex' }}>
                 {
                   product.productsByPrice[key].map(product =>
@@ -66,7 +80,7 @@ const ProductStore = (props) => {
                   )
                 }
               </div>
-            </div>
+            </Card>
           );
         })
       }
