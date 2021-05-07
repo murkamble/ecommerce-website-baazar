@@ -30,7 +30,6 @@ const Header = (props) => {
 
   const userLogin = () => {
     dispatch(login({ email, password }));
-
   };
 
 

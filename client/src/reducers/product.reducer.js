@@ -11,6 +11,8 @@ const initState = {
         above40k: []
     },
     pagRequest: false,
+    productDetails: {},
+    loading: false,
     page: {},
     error: null
 }
@@ -45,6 +47,27 @@ export default (state = initState, action) => {
                 pagRequest: false,
                 error: action.payload.error
             }
+            break;
+
+        case productConstants.GET_PRODUCT_DETAILS_BY_ID_REQUEST:
+            state = {
+                ...state,
+                loading: true,
+            };
+            break;
+        case productConstants.GET_PRODUCT_DETAILS_BY_ID_SUCCESS:
+            state = {
+                ...state,
+                loading: false,
+                productDetails: action.payload.productDetails,
+            };
+            break;
+        case productConstants.GET_PRODUCT_DETAILS_BY_ID_FAILURE:
+            state = {
+                ...state,
+                loading: false,
+                error: action.payload.error,
+            };
             break;
 
     }

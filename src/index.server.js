@@ -9,6 +9,7 @@ const cors = require('cors')
 const app = express()
 env.config()
 app.use(express.json())
+// app.use(bodyParser())
 app.use(cors())
 
 // mongoose Databases connection string
@@ -18,7 +19,8 @@ mongoose.connect(
   {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true
+      useCreateIndex: true,
+      useFindAndModify: false,
   }
 ).then(() => {
   console.log('Databases Connected.')
