@@ -33,6 +33,12 @@ const Header = (props) => {
   };
 
 
+  
+  const logout = () => {
+    dispatch(signout());
+  };
+
+
   useEffect(() => {
     if (auth.authenticate) {
       setLoginModal(false);
@@ -59,7 +65,7 @@ const Header = (props) => {
           { label: "Rewards", href: "", icon: null },
           { label: "Notifications", href: "", icon: null },
           { label: "Gift Cards", href: "", icon: null },
-          { label: "Logout", href: "", icon: null },
+          { label: "Logout", href: "", icon: null, onClick: logout },
         ]}
       />
     );

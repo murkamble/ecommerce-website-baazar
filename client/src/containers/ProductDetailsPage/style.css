@@ -2,6 +2,7 @@
     display: flex;
     box-sizing: border-box;
     padding: 10px;
+    background: #fff;
 }
 .verticalImageStack{
     width: 67px;
@@ -11,6 +12,7 @@
 .thumbnail{
     width: 63px;
     height: 63px;
+    background: #fff;
     border: 1px solid #f0f0f0;
     overflow: hidden;
     text-align: center;
@@ -29,6 +31,7 @@
 .productDescImgContainer{
     width: 485px;
     height: 440px;
+    background: #fff;
     overflow: hidden;
     text-align: center;
     border: 1px solid #f0f0f0;
