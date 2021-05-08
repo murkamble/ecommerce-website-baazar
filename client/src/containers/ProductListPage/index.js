@@ -3,6 +3,7 @@ import Layout from "../../components/Layout";
 import ProductStore from "./ProductStore";
 import ProductPage from "./ProductPage";
 import getParams from "../../utils/getParams";
+import ClothingAndAccessories from "./ClothingAndAccessories";
 import './style.css';
 
 const ProductListPage = (props) => {
@@ -21,7 +22,7 @@ const ProductListPage = (props) => {
                 break;
 
             default:
-                content = null
+                content = <ClothingAndAccessories {...props} />;
         }
 
         return content
