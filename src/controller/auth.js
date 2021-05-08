@@ -47,10 +47,11 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     User.findOne({ email: req.body.email })
-        .exec((error, user) => {
+        .exec(async (error, user) => {
             if (error) res.status(400).json({ error: error })
             if (user) {
-                if (user.authenticate(req.body.password) && user.role === 'user') {
+                const isPassword = await user.authenticate(req.body.password);
+                if (isPassword && user.role === 'user') {
                     const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' })
                     const { _id, firstName, lastName, email, role, fullName } = user
                     res.status(200).json({
