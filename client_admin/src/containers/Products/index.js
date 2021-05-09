@@ -4,7 +4,7 @@ import { Row, Col, Container, Button, Table } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 import Modal from "../../components/UI/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from '../../actions';
+import { addProduct, deleteProductById } from '../../actions';
 import { generatePublicUrl } from '../../urlConfig';
 import "./style.css";
 
@@ -24,6 +24,13 @@ const Products = (props) => {
     const [productDetails, setProductDetails] = useState(null)
 
     const handleClose = () => {
+        setShow(false)
+    };
+    const handleShow = () => setShow(true);
+
+
+
+    const submitProductForm = () => {
         const form = new FormData();
         form.append('name', name);
         form.append('quantity', quantity);
@@ -34,10 +41,10 @@ const Products = (props) => {
         for (let pic of productPictures) {
             form.append('productPicture', pic);
         }
-        dispatch(addProduct(form));
-        setShow(false)
+        dispatch(addProduct(form)).then(() => setShow(false));
     };
-    const handleShow = () => setShow(true);
+
+
 
 
     const createCategoryList = (categories, options = []) => {
@@ -62,23 +69,40 @@ const Products = (props) => {
             <Table style={{ fonstSize: 10 }} responsive="sm">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>Sr.</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Category</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         product.products.length > 0 ?
                             product.products.map((product, i = 0) =>
-                                <tr onClick={() => showProductDetailModal(product)} key={product._id}>
+                                <tr key={product._id}>
                                     <td>{i + 1}</td>
                                     <td>{product.name}</td>
                                     <td>{product.price}</td>
                                     <td>{product.quantity}</td>
                                     <td>{product.category.name}</td>
+                                    <td>
+                                        <button onClick={() => showProductDetailModal(product)}>
+                                            info
+                    </button>
+                                        <button
+                                            onClick={() => {
+                                                const payload = {
+                                                    productId: product._id,
+                                                };
+                                                dispatch(deleteProductById(payload))
+                                                window.location.reload()
+                                            }}
+                                        >
+                                            del
+                    </button>
+                                    </td>
                                 </tr>
                             ) : null
                     }
@@ -94,7 +118,7 @@ const Products = (props) => {
                 show={show}
                 handleClose={handleClose}
                 modalTitle={'Add New Product'}
-                size='lg'
+                onSubmit={submitProductForm}
             >
                 <Input
                     label="Name"
