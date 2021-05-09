@@ -24,8 +24,8 @@ const upload = multer({ storage });
 
 router.post('/category/create', requireSignin, adminMiddleware, upload.single('categoryImage'), addCategory)
 router.get('/category/getcategories', getCategories)
-router.post('/category/update', upload.array('categoryImage'), updateCategory);
-router.post('/category/delete', deleteCategories);
+router.post('/category/update', requireSignin, adminMiddleware, upload.array('categoryImage'), updateCategory);
+router.post('/category/delete', requireSignin, adminMiddleware, deleteCategories);
 
 
 module.exports = router;

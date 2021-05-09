@@ -5,7 +5,8 @@ const {
     createProduct,
     getProductsBySlug,
     getProductDetailsById,
-
+    deleteProductById,
+    getProducts,
 } = require("../controller/product");
 const { requireSignin, adminMiddleware } = require('../common-middleware/index');
 const multer = require('multer');
@@ -34,7 +35,18 @@ router.post(
 
 router.get('/products/:slug', getProductsBySlug);
 router.get("/product/:productId", getProductDetailsById);
-
+router.delete(
+    "/product/deleteProductById",
+    requireSignin,
+    adminMiddleware,
+    deleteProductById
+  );
+  router.post(
+    "/product/getProducts",
+    requireSignin,
+    adminMiddleware,
+    getProducts
+  );
 
 
 module.exports = router;
