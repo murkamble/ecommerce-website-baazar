@@ -91,7 +91,7 @@ const Products = (props) => {
                                         <button onClick={() => showProductDetailModal(product)}>
                                             info
                     </button>
-                                        <button
+                                        {/* <button
                                             onClick={() => {
                                                 const payload = {
                                                     productId: product._id,
@@ -101,7 +101,7 @@ const Products = (props) => {
                                             }}
                                         >
                                             del
-                    </button>
+                    </button> */}
                                     </td>
                                 </tr>
                             ) : null
