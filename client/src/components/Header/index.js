@@ -150,6 +150,7 @@ const Header = (props) => {
 
 
   return (
+    
     <div className="header">
       <Modal
         visible={loginModal}
@@ -185,7 +186,7 @@ const Header = (props) => {
 
                 <MaterialInput
                   type="text"
-                  label="Email/Mobile Number"
+                  label="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -270,9 +271,9 @@ const Header = (props) => {
             ]}
           />
           <div>
-            <a className="cart">
-              <IoIosCart />
-              <span style={{ margin: '0 10px' }}>Cart</span>
+          <a href={`/cart`} className="cart">
+              <Cart count={Object.keys(cart.cartItems).length} />
+              {/* <span style={{ margin: "0 10px" }}>Cart</span> */}
             </a>
           </div>
         </div>
