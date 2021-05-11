@@ -28,7 +28,8 @@
 }
 .orderPrice{
     box-sizing: border-box;
-    padding: 0 40px;
+    padding: 0px 20px;
+    margin-top: 10px;
     display: flex;
     align-items: flex-start;
     font-size: 14px;

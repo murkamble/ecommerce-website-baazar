@@ -51,7 +51,7 @@ const Header = () => {
                 }}
             >
                 <Container fluid>
-                    <Link to="/" className="navbar-brand">Admin Dashboard</Link>
+                    <Link to="/" className="navbar-brand">Admin</Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">

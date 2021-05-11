@@ -13,7 +13,7 @@ const Modal = (props) => {
   return (
     <>
       <div className="modalFixedBg">
-        <div style={{ position: "relative" }}>
+        <div style={{ position: 'relative', width: '98%' }}>
           <div className="modalClose" onClick={props.onClose}>
             X
           </div>

@@ -13,9 +13,9 @@
     align-items: center;
 }
 .modalContainer{
-    min-width: 400px;
+    /* min-width: 400px; */
     max-width: 90%;
-    min-height: 200px;
+    /* min-height: 200px; */
     max-height: 90vh;
     background: #fff;
     border-radius: 4px;
@@ -25,7 +25,7 @@
 .modalClose{
     position: absolute;
     color: #fff;
-    right: 15px;
+    right: 0px;
     font-size: 20px;
 }
 

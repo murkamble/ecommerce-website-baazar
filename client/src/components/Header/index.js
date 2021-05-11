@@ -107,15 +107,24 @@ const Header = (props) => {
         menu={
           <a
             className="loginButton"
-            onClick={() => {
-              setSignup(false);
-              setLoginModal(true);
-            }}
+            // onClick={() => {
+            //   setSignup(false);
+            //   setLoginModal(true);
+            // }}
           >
             Login
           </a>
         }
         menus={[
+          {
+            label: "Login",
+            href: '',
+            icon: null,
+            onClick: () => {
+              setSignup(false);
+              setLoginModal(true);
+            },
+          },
           { label: 'My Profile', href: '', icon: null },
           {
             label: "Orders",
@@ -158,10 +167,10 @@ const Header = (props) => {
       >
         <div className="authContainer">
           <div className="row">
-            <div className="leftspace">
+            {/* <div className="leftspace">
               <h2>Login</h2>
               <p>Get access to your Orders, Wishlist and Recommendations</p>
-            </div>
+            </div> */}
             <div className="rightspace">
               <div className="loginInputContainer">
                 {auth.error && (
@@ -237,7 +246,7 @@ const Header = (props) => {
             <img src={goldenStar} className="goldenStar" alt="" />
           </a> */}
         </div>
-        <div style={{
+        {/* <div style={{
           padding: '0 10px'
         }}>
           <div className="searchInputContainer">
@@ -252,11 +261,11 @@ const Header = (props) => {
             </div>
 
           </div>
-        </div>
+        </div> */}
 
         <div className="rightMenu">
         {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
-          <DropdownMenu
+          {/* <DropdownMenu
             menu={
               <a className="more">
                 <span>More</span>
@@ -269,7 +278,7 @@ const Header = (props) => {
               { label: 'Advertise', href: '', icon: null },
               { label: 'Download App', href: '', icon: null }
             ]}
-          />
+          /> */}
           <div>
           <a href={`/cart`} className="cart">
               <Cart count={Object.keys(cart.cartItems).length} />

@@ -44,19 +44,24 @@ const OrderPage = (props) => {
                 to={`/order_details/${order._id}`}
                 className="orderItemContainer"
               >
-                <div className="orderImgContainer">
-                  <img
+                <div>
+                <img
                     className="orderImg"
                     src={generatePublicUrl(item.productId.productPictures[0].img)}
                   />
                 </div>
-                <div className="orderRow">
-                  <div className="orderName">{item.productId.name}</div>
+                {/* <div className="orderImgContainer">
+                  
+                </div> */}
+                <div className="">
+                  <div className="orderName">
+                    {item.productId.name}
+                  </div>
                   <div className="orderPrice">
                     <BiRupee />
                     {item.payablePrice}
                   </div>
-                  <div>{order.paymentStatus}</div>
+                  <div className="orderPrice" >{order.paymentStatus}</div>
                 </div>
               </Link>
             </Card>

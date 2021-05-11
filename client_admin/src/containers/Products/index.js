@@ -161,7 +161,14 @@ const Products = (props) => {
                 </select>
                 {
                     productPictures.length > 0 ?
-                        productPictures.map((pic, index) => <div key={index}>{pic.name}</div>) : null
+                        productPictures.map((pic, index) => {
+                            if (pic==undefined) {
+                                return null
+                            } else {
+                                return <div key={index}>{pic.name}</div>
+                            }
+                            // console.log(pic==undefined)
+                        }) : null
                 }
                 <input type="file" name="productPicture" onChange={handleProductPictures} />
             </Modal>

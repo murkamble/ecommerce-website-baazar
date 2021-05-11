@@ -3,6 +3,7 @@
     box-sizing: border-box;
     padding: 10px;
     background: #fff;
+    overflow: auto;
 }
 .verticalImageStack{
     width: 67px;

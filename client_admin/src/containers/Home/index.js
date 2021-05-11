@@ -11,8 +11,8 @@ const Home = (props) => {
 
 
             <Jumbotron style={{ margin: '5rem', background: '#fff' }} className="text-center">
-                <h1>Welcome to Admin Dashboard</h1>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search. </p>
+                <h1>Welcome to Dashboard</h1>
+                <p>Ecommerce, also known as electronic commerce or internet commerce, refers to the buying and selling of goods or services using the internet, and the transfer of money and data to execute these transactions. Ecommerce is often used to refer to the sale of physical products online, but it can also describe any kind of commercial transaction that is facilitated through the internet. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search. </p>
             </Jumbotron>
         </Layout>
     )

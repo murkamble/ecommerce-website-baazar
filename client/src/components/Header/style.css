@@ -85,6 +85,18 @@
     font-size: 16px;
     cursor: pointer;
   }
+  .dropdown {
+    right: 50%;
+    position: absolute;
+    width: 200px;
+    background: #fff;
+    transform: translateX(50%);
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / 20%);
+    border-radius: 2px;
+    z-index: 1;
+    margin-top: 12px;
+    display: none;
+}
 .more, .fullName {
     font-weight: bold;
     color: #fff;
@@ -107,16 +119,16 @@
   margin: 0 auto;
   border-radius: 2px;
   height: 528px;
-  max-width: 750px;
-  min-width: 650px;
+  /* max-width: 750px;
+  min-width: 650px; */
 }
 .row{
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  height: 528px;
+  /* height: 528px;
     max-width: 750px;
-    min-width: 650px;
+    min-width: 650px; */
 }
 
 .leftspace{

@@ -83,13 +83,13 @@ const Address = ({
             )}
           </div>
         ) : (
-          <AddressForm
-            withoutLayout={true}
-            onSubmitForm={onAddressSubmit}
-            initialData={adr}
-            onCancel={() => {}}
-          />
-        )}
+            <AddressForm
+              withoutLayout={true}
+              onSubmitForm={onAddressSubmit}
+              initialData={adr}
+              onCancel={() => { }}
+            />
+          )}
       </div>
     </div>
   );
@@ -194,7 +194,22 @@ const CheckoutPage = (props) => {
   return (
     <Layout>
       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
-        <div className="checkoutContainer">
+        <div>
+          {/* Price Component */}
+          <PriceDetails
+            totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
+              return qty + cart.cartItems[key].qty;
+            }, 0)}
+            totalPrice={Object.keys(cart.cartItems).reduce((totalPrice, key) => {
+              const { price, qty } = cart.cartItems[key];
+              return totalPrice + price * qty;
+            }, 0)}
+          />
+        </div>
+        <div>
+
+        </div>
+        <div className="">
           {/* check if user logged in or not */}
           <CheckoutStep
             stepNumber={"1"}
@@ -207,10 +222,10 @@ const CheckoutPage = (props) => {
                   <span style={{ margin: "0 5px" }}>{auth.user.email}</span>
                 </div>
               ) : (
-                <div>
-                  <MaterialInput label="Email" />
-                </div>
-              )
+                  <div>
+                    <MaterialInput label="Email" />
+                  </div>
+                )
             }
           />
           <CheckoutStep
@@ -222,23 +237,23 @@ const CheckoutPage = (props) => {
                 {confirmAddress ? (
                   <div className="stepCompleted">{`${selectedAddress.name} ${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
                 ) : (
-                  address.map((adr) => (
-                    <Address
-                      selectAddress={selectAddress}
-                      enableAddressEditForm={enableAddressEditForm}
-                      confirmDeliveryAddress={confirmDeliveryAddress}
-                      onAddressSubmit={onAddressSubmit}
-                      adr={adr}
-                    />
-                  ))
-                )}
+                    address.map((adr) => (
+                      <Address
+                        selectAddress={selectAddress}
+                        enableAddressEditForm={enableAddressEditForm}
+                        confirmDeliveryAddress={confirmDeliveryAddress}
+                        onAddressSubmit={onAddressSubmit}
+                        adr={adr}
+                      />
+                    ))
+                  )}
               </>
             }
           />
 
           {/* AddressForm */}
           {confirmAddress ? null : newAddress ? (
-            <AddressForm onSubmitForm={onAddressSubmit} onCancel={() => {}} />
+            <AddressForm onSubmitForm={onAddressSubmit} onCancel={() => { }} />
           ) : auth.authenticate ? (
             <CheckoutStep
               stepNumber={"+"}
@@ -322,16 +337,7 @@ const CheckoutPage = (props) => {
           />
         </div>
 
-        {/* Price Component */}
-        <PriceDetails
-          totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
-            return qty + cart.cartItems[key].qty;
-          }, 0)}
-          totalPrice={Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-            const { price, qty } = cart.cartItems[key];
-            return totalPrice + price * qty;
-          }, 0)}
-        />
+
       </div>
     </Layout>
   );
