@@ -8,7 +8,10 @@
     "server": "nodemon src/index.server.js",
     "client_admin": "cd client_admin && npm start",
     "client": "cd client && npm start",
-    "start": "concurrently -n 'server,client_admin,client' -c 'green,yellow,blue' \"npm run server\" \"npm run client_admin\" \"npm run client\" "
+    "client_admin_serve": "cd client_admin && serve -s build",
+    "client_serve": "cd client && serve -s build",
+    "start": "concurrently -n 'server,client_admin,client' -c 'green,yellow,blue' \"npm run server\" \"npm run client_admin\" \"npm run client\" ",
+    "dev": "concurrently -n 'server,client_admin,client' -c 'green,yellow,blue' \" npm run server \" \" npm run client_admin_serve \" \" npm run client_serve \" "
   },
   "repository": {
     "type": "git",
