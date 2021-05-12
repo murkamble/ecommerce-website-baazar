@@ -10,6 +10,7 @@ import CheckoutPage from "./containers/CheckoutPage";
 import OrderPage from "./containers/OrderPage";
 import OrderDetailsPage from "./containers/OrderDetailsPage";
 import './App.css';
+import AboutPage from './containers/AboutPage';
 
 const App = (props) => {
 
@@ -33,6 +34,7 @@ const App = (props) => {
       <Router>
         <Switch>
           <Route path="/" exact component={HomePage} />
+          <Route path="/about" component={AboutPage} />
           <Route path="/cart" component={CartPage} />
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/account/orders" component={OrderPage} />
