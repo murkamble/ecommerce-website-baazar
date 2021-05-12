@@ -4,6 +4,7 @@
     background: #fff;
     border-bottom: 1px solid #cecece;
     box-shadow:  0 4px 6px -4px gray;
+    overflow: auto;
 }
 
 
@@ -15,8 +16,8 @@
 
 .menuHeader > ul{
     display: flex;
-    margin: 0 50px;
-    position: relative;
+    /* margin: 0 50px;
+    position: relative; */
 }
 
 .menuHeader > ul > li > samp{
