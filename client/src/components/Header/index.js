@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import flipkartLogo from '../../images/logo/flipkart.png';
 import loginImage from '../../images/login-image.png';
+import BaazarImage from '../../images/logo/Baazar.png';
 import goldenStar from '../../images/logo/golden-star.png';
 import { IoIosArrowDown, IoIosCart, IoIosSearch } from 'react-icons/io';
 import {
@@ -238,7 +239,7 @@ const Header = (props) => {
             padding: '10px',
             fontWeight: '500'
           }}>
-            <label>Baazar</label>
+            <img src={BaazarImage} className="logo" alt="" />
           </a>
           {/* <a style={{ marginTop: '-10px' }}>
             <span className="exploreText">Explore</span>
@@ -246,7 +247,7 @@ const Header = (props) => {
             <img src={goldenStar} className="goldenStar" alt="" />
           </a> */}
         </div>
-        {/* <div style={{
+        <div style={{
           padding: '0 10px'
         }}>
           <div className="searchInputContainer">
@@ -261,7 +262,7 @@ const Header = (props) => {
             </div>
 
           </div>
-        </div> */}
+        </div>
 
         <div className="rightMenu">
         {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
