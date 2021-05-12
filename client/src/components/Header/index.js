@@ -138,6 +138,11 @@ const Header = (props) => {
           { label: 'Wishlist', href: '', icon: null },
           { label: 'Rewards', href: '', icon: null },
           { label: 'Gift Cards', href: '', icon: null },
+          {
+            label: "About",
+            href: `/about`,
+            icon: null
+          },
         ]}
         firstMenu={
           <div className="firstmenu">
